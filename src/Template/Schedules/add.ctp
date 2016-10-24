@@ -15,7 +15,7 @@
         <?php
             echo $this->Form->input('date', ['empty' => true]);
             echo $this->Form->input('specialist_id', ['options' => $specialists]);
-            echo $this->Form->input('sesion_id', ['options' => $sesions]);
+            echo $this->Form->input('sesion_id', ['options' => array(null) ]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

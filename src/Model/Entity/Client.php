@@ -7,7 +7,7 @@ use Cake\ORM\Entity;
  * Client Entity
  *
  * @property int $id
- * @property int $personal_id
+ * @property int $ci
  * @property string $name
  * @property string $last_name
  * @property \Cake\I18n\Time $birthdate
@@ -16,7 +16,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
  *
- * @property \App\Model\Entity\Personal $personal
  * @property \App\Model\Entity\Payment[] $payments
  * @property \App\Model\Entity\Sesion[] $sesions
  */

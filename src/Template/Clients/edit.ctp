@@ -19,7 +19,7 @@
     <fieldset>
         <legend><?= __('Edit Client') ?></legend>
         <?php
-            echo $this->Form->input('personal_id');
+            echo $this->Form->input('ci');
             echo $this->Form->input('name');
             echo $this->Form->input('last_name');
             echo $this->Form->input('birthdate', ['empty' => true]);

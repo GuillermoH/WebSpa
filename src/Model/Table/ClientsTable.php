@@ -9,7 +9,6 @@ use Cake\Validation\Validator;
 /**
  * Clients Model
  *
- * @property \Cake\ORM\Association\BelongsTo $Personals
  * @property \Cake\ORM\Association\HasMany $Payments
  * @property \Cake\ORM\Association\HasMany $Sesions
  *
@@ -42,10 +41,6 @@ class ClientsTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->belongsTo('Personals', [
-            'foreignKey' => 'personal_id',
-            'joinType' => 'INNER'
-        ]);
         $this->hasMany('Payments', [
             'foreignKey' => 'client_id'
         ]);
@@ -65,6 +60,11 @@ class ClientsTable extends Table
         $validator
             ->integer('id')
             ->allowEmpty('id', 'create');
+
+        $validator
+            ->integer('ci')
+            ->requirePresence('ci', 'create')
+            ->notEmpty('ci');
 
         $validator
             ->requirePresence('name', 'create')
@@ -98,7 +98,6 @@ class ClientsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->isUnique(['email']));
-        $rules->add($rules->existsIn(['personal_id'], 'Personals'));
 
         return $rules;
     }

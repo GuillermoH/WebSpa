@@ -1,6 +1,7 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
+        <li><?= $this->Html->link(__('logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Specialists'), ['controller' => 'Specialists', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Specialist'), ['controller' => 'Specialists', 'action' => 'add']) ?></li>

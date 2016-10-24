@@ -18,7 +18,7 @@ class ClientsFixture extends TestFixture
     // @codingStandardsIgnoreStart
     public $fields = [
         'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
-        'personal_id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'ci' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         'name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'last_name' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8_general_ci', 'comment' => '', 'precision' => null, 'fixed' => null],
         'birthdate' => ['type' => 'date', 'length' => null, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null],
@@ -44,14 +44,14 @@ class ClientsFixture extends TestFixture
     public $records = [
         [
             'id' => 1,
-            'personal_id' => 1,
+            'ci' => 1,
             'name' => 'Lorem ipsum dolor sit amet',
             'last_name' => 'Lorem ipsum dolor sit amet',
-            'birthdate' => '2016-10-23',
+            'birthdate' => '2016-10-24',
             'phone' => 'Lorem ipsum dolor ',
             'email' => 'Lorem ipsum dolor sit amet',
-            'created' => '2016-10-23 20:34:47',
-            'modified' => '2016-10-23 20:34:47'
+            'created' => '2016-10-24 04:14:40',
+            'modified' => '2016-10-24 04:14:40'
         ],
     ];
 }

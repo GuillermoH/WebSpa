@@ -35,8 +35,8 @@
             <td><?= $this->Number->format($client->id) ?></td>
         </tr>
         <tr>
-            <th scope="row"><?= __('Personal Id') ?></th>
-            <td><?= $this->Number->format($client->personal_id) ?></td>
+            <th scope="row"><?= __('Ci') ?></th>
+            <td><?= $this->Number->format($client->ci) ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Birthdate') ?></th>

@@ -14,7 +14,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('personal_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('ci') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('last_name') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('birthdate') ?></th>
@@ -29,7 +29,7 @@
             <?php foreach ($clients as $client): ?>
             <tr>
                 <td><?= $this->Number->format($client->id) ?></td>
-                <td><?= $this->Number->format($client->personal_id) ?></td>
+                <td><?= $this->Number->format($client->ci) ?></td>
                 <td><?= h($client->name) ?></td>
                 <td><?= h($client->last_name) ?></td>
                 <td><?= h($client->birthdate) ?></td>
