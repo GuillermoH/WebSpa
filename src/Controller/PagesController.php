@@ -38,6 +38,7 @@ class PagesController extends AppController
     public function display()
     {
         $path = func_get_args();
+        $userRole = $this->Auth->user('role');
 
         $count = count($path);
         if (!$count) {
@@ -61,5 +62,6 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+
     }
 }

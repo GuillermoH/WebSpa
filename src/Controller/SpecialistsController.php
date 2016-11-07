@@ -108,4 +108,17 @@ class SpecialistsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        if ($this->Auth->user('role') === 'ROLE_ADMIN' || $this->Auth->user('role') === 'ROLE_MAN' || $this->Auth->user('role') === 'ROLE_SPEC') {
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+        return parent::isAuthorized($user);
+    }
 }

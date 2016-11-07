@@ -47,23 +47,3 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
-<?php
-$session = $this->request->session();
-$user_data = $session->read('Auth.User.role');
-if(!empty($user_data)){
-    if($user_data != 'ROLE_ADMIN'){
-        echo "
-        <style> 
-    .actions{
-        visibility: hidden;
-    }
-    
-</style>
-        ";
-//        $this->redirect('/admin');
-    }
-
-}
-
-
-?>

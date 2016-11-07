@@ -25,25 +25,6 @@ if (!Configure::read('debug')):
     throw new NotFoundException('Please replace src/Template/Pages/home.ctp with your own version.');
 endif;
 
-$session = $this->request->session();
-$user_data = $session->read('Auth.User.role');
-if(!empty($user_data)){
-    if($user_data === 'ROLE_ADMIN'){
-    echo "<script>
-        window.location.replace(\"/admin\");
-    </script>";
-//        $this->redirect('/admin');
-    }elseif ($user_data === 'ROLE_MAN'){
-        echo "<script>
-        window.location.replace(\"/manager\");
-    </script>";
-    }else{
-        echo "<script>
-        window.location.replace(\"/specialist\");
-    </script>";
-    }
-}
-
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
@@ -59,22 +40,37 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->css('cake.css') ?>
 </head>
 <body class="home">
-    <header style="background-color:#c10020; height: 100% ">
+    <header style="background-color: #ab47bc">
         <div class="header-image">
             <?= $this->Html->image('logo.png') ?>
-            <h1>Proyecto para Ingenier&iacute;a de Software</h1>
-            <h2 style="color: white">WebSpa</h2>
-            <h3 style="color: white">Grupo: Alejandra Saavedra, Cesare Brice&ntilde;o y Guillermo Hellmund</h3>
-            <div> <a href="/users/login" class="button">Iniciar Sesi&oacute;n</a> <a href="/users/add" class="button">Registrarse</a></div>
+            <h1>Bienvenido <?php   $session = $this->request->session();
+                $user_data = $session->read('Auth.User.user');
+                if(!empty($user_data)){
+                    print_r($user_data);
+                }?></h1>
+            <h3 style="color: white">Este es el panel de especialista</h3>
+            <div> <a href="/users/logout" class="button">Salir del sistema</a></div>
             <div style="height: 10px"></div> <?= $this->Html->image('http://cakephp.org/img/logo-cake.png') ?> </div>
+            <div></div>
 
         </div>
+
     </header>
     <div id="content">
         <div class="row">
 
-            <div class="columns large-6"> </div>
-            <div class="columns large-6">  </div>
+            <div class="columns large-6">
+                <button class="button">Check-in</button>
+            </div>
+            <div class="columns large-6">
+
+                <?php
+                $session = $this->request->session();
+                $user_data = $session->read('Auth.User.specialist_id');
+
+                echo '<button class="button"><a href="/specialists/view/'.$user_data.'" style="color: white">Ver agendas</a></button>'
+                ?>
+            </div>
 
         </div>
     </div>

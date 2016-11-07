@@ -103,15 +103,21 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-        }
+        if ($this->Auth->user('role') === 'ROLE_MAN' ){
+            $this->redirect('/');
 
-        return $this->redirect(['action' => 'index']);
+        }else{
+
+            $this->request->allowMethod(['post', 'delete']);
+            $user = $this->Users->get($id);
+            if ($this->Users->delete($user)) {
+                $this->Flash->success(__('The user has been deleted.'));
+            } else {
+                $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            }
+
+            return $this->redirect(['action' => 'index']);
+        }
     }
 
     public function initialize()
@@ -127,15 +133,34 @@ class UsersController extends AppController
             $user = $this->Auth->identify();
             if ($user) {
                 $this->Auth->setUser($user);
-                return $this->redirect($this->Auth->redirectUrl());
+
+                if ($this->Auth->user('role') === 'ROLE_ADMIN'){
+                    $this->redirect('/admin');
+                }elseif ($this->Auth->user('role') === 'ROLE_MAN'){
+                    $this->redirect('/manager');
+                }elseif ($this->Auth->user('role') === 'ROLE_SPEC'){
+                    $this->redirect('/specialist');
+                }else{
+                    $this->redirect('/');
+                }
             }
-            $this->Flash->error('Your username or password is incorrect.');
         }
     }
 
     public function logout()
     {
-        $this->Flash->success('You are now logged out.');
+        $this->Flash->success('Has salido del sistema');
         return $this->redirect($this->Auth->logout());
+    }
+
+    public function isAuthorized($user)
+    {
+        if ($this->Auth->user('role') === 'ROLE_ADMIN' || $this->Auth->user('role') === 'ROLE_MAN') {
+            return true;
+        }else{
+            return false;
+        }
+
+        return parent::isAuthorized($user);
     }
 }

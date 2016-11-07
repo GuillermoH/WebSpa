@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $user
  * @property string $password
- * @property string $rol
+ * @property string $role
  * @property int $specialist_id
  * @property \Cake\I18n\Time $created
  * @property \Cake\I18n\Time $modified
@@ -19,7 +19,11 @@ use Cake\ORM\Entity;
  */
 class User extends Entity
 {
-
+    protected function _setPassword($value)
+    {
+        $hasher = new DefaultPasswordHasher();
+        return $hasher->hash($value);
+    }
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *
@@ -29,12 +33,6 @@ class User extends Entity
      *
      * @var array
      */
-    protected function _setPassword($value)
-    {
-        $hasher = new DefaultPasswordHasher();
-        return $hasher->hash($value);
-    }
-
     protected $_accessible = [
         '*' => true,
         'id' => false

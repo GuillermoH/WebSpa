@@ -19,7 +19,7 @@
         <?php
             echo $this->Form->input('user');
             echo $this->Form->input('password');
-            echo $this->Form->input('rol');
+            echo $this->Form->input('role');
             echo $this->Form->input('specialist_id', ['options' => $specialists, 'empty' => true]);
         ?>
     </fieldset>
