@@ -1,4 +1,4 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
+<nav class="large-3 medium-4 columns spec-noshow" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('Edit Specialist'), ['action' => 'edit', $specialist->id]) ?> </li>
@@ -13,7 +13,7 @@
 </nav>
 <div class="specialists view large-9 medium-8 columns content">
     <h3><?= h($specialist->name) ?></h3>
-    <table class="vertical-table">
+    <table class="vertical-table spec-noshow">
         <tr>
             <th scope="row"><?= __('Name') ?></th>
             <td><?= h($specialist->name) ?></td>
@@ -82,7 +82,7 @@
         </table>
         <?php endif; ?>
     </div>
-    <div class="related">
+    <div class="related spec-noshow">
         <h4><?= __('Related Users') ?></h4>
         <?php if (!empty($specialist->users)): ?>
         <table cellpadding="0" cellspacing="0">
@@ -116,3 +116,30 @@
         <?php endif; ?>
     </div>
 </div>
+
+<?php
+$session = $this->request->session();
+$user_data = $session->read('Auth.User.role');
+if(!empty($user_data)){
+    if($user_data === 'ROLE_SPEC'){
+        echo "
+        <style> 
+    .actions{
+        visibility: hidden;
+        display: none;
+    }
+    
+    .spec-noshow{
+    visibility: hidden;
+    display: none;
+    }
+    
+</style>
+        ";
+//        $this->redirect('/admin');
+    }
+
+}
+
+
+?>

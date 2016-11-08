@@ -66,7 +66,7 @@ class UsersTable extends Table
             ->notEmpty('password');
 
         $validator
-            ->allowEmpty('rol');
+            ->allowEmpty('role');
 
         return $validator;
     }

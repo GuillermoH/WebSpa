@@ -40,7 +40,6 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $service->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $service->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->id], ['confirm' => __('Are you sure you want to delete # {0}?', $service->id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -55,3 +54,23 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+<?php
+$session = $this->request->session();
+$user_data = $session->read('Auth.User.role');
+if(!empty($user_data)){
+    if($user_data != 'ROLE_ADMIN'){
+        echo "
+        <style> 
+    .actions{
+        visibility: hidden;
+    }
+    
+</style>
+        ";
+//        $this->redirect('/admin');
+    }
+
+}
+
+
+?>

@@ -38,7 +38,7 @@ $cakeDescription = 'WebSpa';
         <div class="large-12">
             <ul class="title-area large-3 medium-4 columns">
                 <li class="name">
-                    <h1><a href=""><?= $this->fetch('title') ?></a></h1>
+                    <h1><a href="/">Home</a></h1>
                 </li>
             </ul>
             <div class="large-6 medium-4 columns text-center">
@@ -58,6 +58,7 @@ $cakeDescription = 'WebSpa';
 
     </nav>
     <?= $this->Flash->render() ?>
+    <?= $this->Flash->render('auth') ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
     </div>

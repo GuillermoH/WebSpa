@@ -108,4 +108,17 @@ class ClientsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function isAuthorized($user)
+    {
+        if ($this->Auth->user('role') === 'ROLE_ADMIN' || $this->Auth->user('role') === 'ROLE_MAN') {
+            return true;
+        }else{
+            return false;
+        }
+
+
+
+        return parent::isAuthorized($user);
+    }
 }

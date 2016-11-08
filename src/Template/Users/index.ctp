@@ -1,7 +1,6 @@
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('logout'), ['controller' => 'Users', 'action' => 'logout']) ?></li>
         <li><?= $this->Html->link(__('New User'), ['action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Specialists'), ['controller' => 'Specialists', 'action' => 'index']) ?></li>
         <li><?= $this->Html->link(__('New Specialist'), ['controller' => 'Specialists', 'action' => 'add']) ?></li>
@@ -14,8 +13,7 @@
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('user') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('password') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('rol') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('role') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('specialist_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('created') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
@@ -27,8 +25,7 @@
             <tr>
                 <td><?= $this->Number->format($user->id) ?></td>
                 <td><?= h($user->user) ?></td>
-                <td><?= h($user->password) ?></td>
-                <td><?= h($user->rol) ?></td>
+                <td><?= h($user->role) ?></td>
                 <td><?= $user->has('specialist') ? $this->Html->link($user->specialist->name, ['controller' => 'Specialists', 'action' => 'view', $user->specialist->id]) : '' ?></td>
                 <td><?= h($user->created) ?></td>
                 <td><?= h($user->modified) ?></td>
@@ -50,3 +47,23 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+<?php
+$session = $this->request->session();
+$user_data = $session->read('Auth.User.role');
+if(!empty($user_data)){
+    if($user_data != 'ROLE_ADMIN'){
+        echo "
+        <style> 
+    .actions{
+        visibility: hidden;
+    }
+    
+</style>
+        ";
+//        $this->redirect('/admin');
+    }
+
+}
+
+
+?>

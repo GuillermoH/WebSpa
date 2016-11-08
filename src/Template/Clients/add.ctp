@@ -16,7 +16,19 @@
             echo $this->Form->input('ci');
             echo $this->Form->input('name');
             echo $this->Form->input('last_name');
-            echo $this->Form->input('birthdate', ['empty' => true]);
+            echo $this->Form->input('birthdate',
+                array(
+                    'type' => 'date',
+                    'dateFormat' => 'DMY',
+                    'empty' => array(
+                        'day'   => 'Day',
+                        'month' => 'Month',
+                        'year'  => 'Year'
+                    ),
+                    'minYear' => date('Y')-130,
+                    'maxYear' => date('Y'),
+                    'options' => array('1','2')
+                ));
             echo $this->Form->input('phone');
             echo $this->Form->input('email');
         ?>

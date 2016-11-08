@@ -25,6 +25,25 @@ if (!Configure::read('debug')):
     throw new NotFoundException('Please replace src/Template/Pages/home.ctp with your own version.');
 endif;
 
+$session = $this->request->session();
+$user_data = $session->read('Auth.User.role');
+if(!empty($user_data)){
+    if($user_data === 'ROLE_ADMIN'){
+    echo "<script>
+        window.location.replace(\"/admin\");
+    </script>";
+//        $this->redirect('/admin');
+    }elseif ($user_data === 'ROLE_MAN'){
+        echo "<script>
+        window.location.replace(\"/manager\");
+    </script>";
+    }else{
+        echo "<script>
+        window.location.replace(\"/specialist\");
+    </script>";
+    }
+}
+
 $cakeDescription = 'CakePHP: the rapid development PHP framework';
 ?>
 <!DOCTYPE html>
@@ -40,21 +59,36 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->css('cake.css') ?>
 </head>
 <body class="home">
-    <header>
+    <header style="background-color:#c10020">
         <div class="header-image">
             <?= $this->Html->image('logo.png') ?>
-            <h1>Proyecto para inegnier&iacute;a de software</h1>
+            <h1>Proyecto para Ingenier&iacute;a de Software</h1>
             <h2 style="color: white">WebSpa</h2>
-            <h3 style="color: white">Grupo: Alejandra Saavedra, Cesare brice&ncaron;o y Guillermo Hellmund</h3>
+            <h3 style="color: white">Grupo: Alejandra Saavedra, Cesare Brice&ntilde;o y Guillermo Hellmund</h3>
             <div> <a href="/users/login" class="button">Iniciar Sesi&oacute;n</a> <a href="/users/add" class="button">Registrarse</a></div>
             <div style="height: 10px"></div> <?= $this->Html->image('http://cakephp.org/img/logo-cake.png') ?> </div>
+
         </div>
     </header>
     <div id="content">
         <div class="row">
 
-            <div class="columns large-6"> </div>
-            <div class="columns large-6">  </div>
+            <div class="columns large-4">
+                <h3>Usuario Administrador</h3>
+                <p>Usuario: guillermo <br>
+                Clave: 123123</p>
+            </div>
+            <div class="columns large-4">
+                <h3>Usuario Gerente</h3>
+                <p>Usuario: alejandra <br>
+                    Clave: 123456</p>
+            </div>
+            <div class="columns large-4">
+                <h3>Usuario Especialista</h3>
+                <p>Usuario: bernardo <br>
+                    Clave: 123456</p>
+            </div>
+
 
         </div>
     </div>
