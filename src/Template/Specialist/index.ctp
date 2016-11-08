@@ -68,7 +68,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
                 $session = $this->request->session();
                 $user_data = $session->read('Auth.User.specialist_id');
 
-                echo '<button class="button"><a href="/specialists/view/'.$user_data.'" style="color: white">Ver agendas</a></button>'
+                echo '<a href="/specialists/view/'.$user_data.'" style="color: white" class="button">Ver agendas</a>'
                 ?>
             </div>
 
