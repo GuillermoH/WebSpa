@@ -59,7 +59,7 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <?= $this->Html->css('cake.css') ?>
 </head>
 <body class="home">
-    <header style="background-color:#c10020; height: 100% ">
+    <header style="background-color:#c10020">
         <div class="header-image">
             <?= $this->Html->image('logo.png') ?>
             <h1>Proyecto para Ingenier&iacute;a de Software</h1>
@@ -73,8 +73,22 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div id="content">
         <div class="row">
 
-            <div class="columns large-6"> </div>
-            <div class="columns large-6">  </div>
+            <div class="columns large-4">
+                <h3>Usuario Administrador</h3>
+                <p>Usuario: guillermo <br>
+                Clave: 123123</p>
+            </div>
+            <div class="columns large-4">
+                <h3>Usuario Gerente</h3>
+                <p>Usuario: alejandra <br>
+                    Clave: 123456</p>
+            </div>
+            <div class="columns large-4">
+                <h3>Usuario Especialista</h3>
+                <p>Usuario: bernardo <br>
+                    Clave: 123456</p>
+            </div>
+
 
         </div>
     </div>
