@@ -229,9 +229,9 @@ return [
              * the following line and set the port accordingly
              */
             //'port' => 'non_standard_port_number',
-            'username' => 'u532045867_websp',
+            'username' => 'u486058449_websp',
             'password' => '123123',
-            'database' => 'u532045867_websp',
+            'database' => '	u486058449_websp',
             'encoding' => 'utf8',
             'timezone' => 'UTC',
             'flags' => [],
